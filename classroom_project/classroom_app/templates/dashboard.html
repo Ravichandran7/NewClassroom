@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Welcome, {{ user.username }}</h1>
+
+    <h2>Created Classrooms</h2>
+    <ul>
+        {% for classroom in created_classrooms %}
+            <li>{{ classroom.name }} (Code: {{ classroom.code }})</li>
+        {% empty %}
+            <p>No classrooms created yet.</p>
+        {% endfor %}
+    </ul>
+
+    <h2>Joined Classrooms</h2>
+    <ul>
+        {% for membership in joined_classrooms %}
+            <li>{{ membership.classroom.name }} (Teacher: {{ membership.classroom.teacher.username }})</li>
+        {% empty %}
+            <p>No classrooms joined yet.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
